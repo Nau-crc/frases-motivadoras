@@ -7,7 +7,8 @@
     <title>Phrase</title>
 </head>
 <body>
-    <h1>{{ $phrase }}</h1>
+    <h1>{{ $phrase->phrase }}</h1>
+    <p>{{ $phrase->author}}</p>
     
     <img src="{{ $phrase->image }}" alt="{{ $phrase->phrase }} . 'photo'">
 </body>

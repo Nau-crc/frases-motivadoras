@@ -55,7 +55,7 @@ class PhraseController extends Controller
      */
     public function show(Phrase $phrase, $id)
     {
-        $phrase = Phrase::find($phrase->id);
+        $phrase = Phrase::find($id);
         return view('show', compact(['phrase', 'id']));
     }
 
