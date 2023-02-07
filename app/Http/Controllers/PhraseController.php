@@ -76,12 +76,14 @@ class PhraseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Phrase  $phrase
+     * @param  \App\Models\Phrase  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Phrase $phrase)
+    public function update(Request $request, Phrase $id)
     {
-        //
+        $phrase = Phrase::find($id);
+        $phrase->update($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -90,7 +92,7 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Phrase $phrase)
+    public function destroy(Phrase $id)
     {
         //
     }

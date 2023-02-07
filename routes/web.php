@@ -24,3 +24,4 @@ Route::get('/create', [PhraseController::class, 'create'])->name('create');
 Route::post('/store', [PhraseController::class, 'store'])->name('store');
 Route::get('/show/{id}', [PhraseController::class, 'show'])->name('show');
 Route::get('/edit/{id}', [PhraseController::class, 'edit'])->name('edit');
+Route::get('/update', [PhraseController::class, 'update'])->name('update');

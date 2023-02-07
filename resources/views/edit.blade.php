@@ -7,8 +7,9 @@
     <title>Edit</title>
 </head>
 <body>
-<form action="" method="GET" enctype="multipart/form-data">
+<form action="{{ route('update') }}" method="GET" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div>
             <label for="{{ $phrase->phrase }}">Phrase</label>
             <input type="text" name="{{ $phrase->phrase }}" value="{{ $phrase->phrase }}">
