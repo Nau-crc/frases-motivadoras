@@ -38,13 +38,19 @@
         </div> -->
 
         <div>
+            @if(count($phrases) >= 1)
             
             @foreach($phrases as $phrase)
             <h1>{{ $phrase->phrase }}</h1>
             <p>{{ $phrase->author }}</p>
             <img src="{{ $phrase->image }}">
-
             @endforeach
+
+            @else
+            <h1>NO HAY NADAAAAAAAAAAA</h1>
+            
+            
+            @endif
         </div>
     </body>
 </html>
