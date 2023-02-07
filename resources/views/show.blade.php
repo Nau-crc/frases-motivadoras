@@ -11,5 +11,7 @@
     <p>{{ $phrase->author}}</p>
     
     <img src="{{ $phrase->image }}" alt="{{ $phrase->phrase }} . 'photo'">
+
+    <a href="{{ route('edit/{id}') }}"><button type="button">Editar</button></a>
 </body>
 </html>

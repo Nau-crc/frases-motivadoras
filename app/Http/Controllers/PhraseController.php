@@ -67,7 +67,11 @@ class PhraseController extends Controller
      */
     public function edit(Phrase $phrase)
     {
-        //
+        $id = $phrase->id;
+        $author = $phrase->author;
+        $image = $phrase->image;
+        $phrase = Phrase::find($id);
+        return view('edit', compact(['phrase', 'id', 'author', 'image']));
     }
 
     /**
