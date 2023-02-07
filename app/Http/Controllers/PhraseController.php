@@ -44,8 +44,7 @@ class PhraseController extends Controller
         ]);
 
         $phrase->save();
-        //cambiar cuando tengamos el show
-        return redirect()->route('home');
+        return redirect()->route('show', $phrase->id);
     }
 
     /**
@@ -54,9 +53,10 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function show(Phrase $phrase)
+    public function show(Phrase $phrase, $id)
     {
-        //
+        $phrase = Phrase::find($phrase->id);
+        return view('show', compact(['phrase', 'id']));
     }
 
     /**
