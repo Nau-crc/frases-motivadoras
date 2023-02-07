@@ -14,7 +14,7 @@ class PhraseController extends Controller
      */
     public function index()
     {
-        //llamamos a todos las phrases
+        //llamamos a todas las phrases
         $phrases = Phrase::all();
         return view('welcome', compact('phrases'));
     }
@@ -26,7 +26,7 @@ class PhraseController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -37,7 +37,15 @@ class PhraseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $phrase = Phrase::create([
+            'phrase' => $request->phrase,
+            'author' => $request->author,
+            'image' => $request->image
+        ]);
+
+        $phrase->save();
+        //cambiar cuando tengamos el show
+        return redirect()->route('home');
     }
 
     /**

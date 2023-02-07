@@ -20,3 +20,5 @@ use App\Http\Controllers\PhraseController;
 // });
 
 Route::get('/home', [PhraseController::class, 'index'])->name('home');
+Route::get('/create', [PhraseController::class, 'create'])->name('create');
+Route::post('/store', [PhraseController::class, 'store'])->name('store');
