@@ -7,20 +7,19 @@
     <title>Edit</title>
 </head>
 <body>
-<form action="{{ route('edit', $phrase) }}" method="GET" enctype="multipart/form-data">
+<form action="" method="GET" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
         <div>
-            <label for="{{ $phrase }}">{{ $phrase }}</label>
-            <input type="text" name="phrase">
+            <label for="{{ $phrase->phrase }}">Phrase</label>
+            <input type="text" name="{{ $phrase->phrase }}" value="{{ $phrase->phrase }}">
         </div>
         <div>
-            <label for="{{ $author }}">{{ $author }}</label>
-            <input type="text" name="{{ $author }}">
+            <label for="{{ $phrase->author }}">Author</label>
+            <input type="text" name="{{ $phrase->author }}" value="{{ $phrase->author }}">
         </div>
         <div>
-            <label for="{{ $image }}">{{ $image }}</label>
-            <input type="text" name="{{ $image }}">
+            <label for="{{ $phrase->image }}">Image</label>
+            <input type="text" name="{{ $phrase->image }}" value="{{ $phrase->image }}">
         </div>
         <div>
             <button type="submit">Save</button>

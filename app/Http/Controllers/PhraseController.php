@@ -65,13 +65,11 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function edit(Phrase $phrase)
+    public function edit(Phrase $phrase, $id)
     {
-        $id = $phrase->id;
-        $author = $phrase->author;
-        $image = $phrase->image;
+        
         $phrase = Phrase::find($id);
-        return view('edit', compact(['phrase', 'id', 'author', 'image']));
+        return view('edit', compact(['phrase', 'id']));
     }
 
     /**
