@@ -16,7 +16,7 @@ class PhraseController extends Controller
     {
         //llamamos a todos las phrases
         $phrases = Phrase::all();
-        return view ('welcome');
+        return view('welcome', compact('phrases'));
     }
 
     /**
