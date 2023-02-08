@@ -16,7 +16,7 @@ class PhraseController extends Controller
     {
         //llamamos a todas las phrases
         $phrases = Phrase::all();
-        return view('welcome', compact('phrases'));
+        return view('home', compact('phrases'));
     }
 
     /**
@@ -53,10 +53,10 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function show(Phrase $phrase, $id)
+    public function show($id)
     {
-        $phrase = Phrase::find($phrase->id);
-        return view('show', compact(['phrase', 'id']));
+        $phrase = Phrase::find($id);
+        return view('show', compact('phrase'));
     }
 
     /**
