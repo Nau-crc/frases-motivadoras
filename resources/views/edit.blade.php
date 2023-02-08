@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <form method="POST" enctype="multipart/form-data">
+    <form action="{{ route('update', $phrase->id) }}" method="POST" enctype="multipart/form-data">
+        @method('patch')
         @csrf
         <div>
             <label for="phrase">Phrase</label>

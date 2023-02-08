@@ -77,9 +77,16 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Phrase $phrase)
+    public function update(Request $request, $id)
     {
-        //
+        $phrase = Phrase::find($id);
+        $phrase->update([
+            'phrase' => $request->phrase,
+            'author' => $request->author,
+            'image' => $request->image
+        ]);
+
+        return redirect()->route('show', $id);
     }
 
     /**
