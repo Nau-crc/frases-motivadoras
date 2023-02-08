@@ -85,7 +85,6 @@ class PhraseController extends Controller
             'author' => $request->author,
             'image' => $request->image
         ]);
-
         return redirect()->route('show', $id);
     }
 
@@ -95,8 +94,10 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Phrase $phrase)
+    public function destroy($id)
     {
-        //
+        $phrase = Phrase::find($id);
+        $phrase->delete();
+        return redirect()->route('home');
     }
 }
