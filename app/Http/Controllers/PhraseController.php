@@ -14,7 +14,6 @@ class PhraseController extends Controller
      */
     public function index()
     {
-        //llamamos a todas las phrases
         $phrases = Phrase::all();
         return view('home', compact('phrases'));
     }
@@ -65,9 +64,10 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function edit(Phrase $phrase)
+    public function edit($id)
     {
-        //
+        $phrase = Phrase::find($id);
+        return view('edit', compact('phrase'));
     }
 
     /**
