@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('phrases', function (Blueprint $table) {
             $table->id();
-            $table->string('phrase');
-            $table->string('author');
-            $table->string('image');
+            $table->string('phrase')->nullable();
+            $table->string('author')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

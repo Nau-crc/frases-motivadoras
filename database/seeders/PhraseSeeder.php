@@ -22,5 +22,7 @@ class PhraseSeeder extends Seeder
             'created_at' => '2020/01/01'
 
         ]);
+
+        \App\Models\Phrase::factory(10)->create();
     }
 }

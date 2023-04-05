@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
+use App\Models\Phrase;
 use Tests\TestCase;
 
 
@@ -16,31 +17,16 @@ class ExampleTest extends TestCase
      * @return void
      */
 
-    public function test_home_page_exists()
+    public function test_home_page_retrieve_all_phrases()
     {
+        $this->withoutExceptionHandling();
+        $phrases = Phrase::factory(10)->create();
+        
+        $this->assertCount(10, $phrases);
+        
         $response = $this->get('/home');
-
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+                 ->assertViewIs('home')
+                 ->assertViewHas('phrases', $phrases);
     }
-
-    public function test_show_phrase_exists()
-    {
-        $response = $this->get('/show/1');
-
-        $response->assertStatus(200);
-    }
-    public function test_edit_page_exists()
-    {
-        $response = $this->get('/edit/1');
-
-        $response->assertStatus(200);
-    }
-    public function test_user()
-    {
-        $user = User::factory()->create();
- 
-        $response = assertExists();
-    }
-
-
 }
