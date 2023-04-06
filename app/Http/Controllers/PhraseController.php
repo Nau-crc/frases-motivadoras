@@ -14,9 +14,8 @@ class PhraseController extends Controller
      */
     public function index()
     {
-        //llamamos a todas las phrases
         $phrases = Phrase::all();
-        return view('welcome', compact('phrases'));
+        return view('home', compact('phrases'));
     }
 
     /**
@@ -53,10 +52,10 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function show(Phrase $phrase, $id)
+    public function show($id)
     {
         $phrase = Phrase::find($id);
-        return view('show', compact(['phrase', 'id']));
+        return view('show', compact('phrase'));
     }
 
     /**
@@ -65,11 +64,10 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function edit(Phrase $phrase, $id)
+    public function edit($id)
     {
-        
         $phrase = Phrase::find($id);
-        return view('edit', compact(['phrase', 'id']));
+        return view('edit', compact('phrase'));
     }
 
     /**
@@ -79,11 +77,15 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Phrase $id)
+    public function update(Request $request, $id)
     {
         $phrase = Phrase::find($id);
-        $phrase->update($request->all());
-        return redirect()->back();
+        $phrase->update([
+            'phrase' => $request->phrase,
+            'author' => $request->author,
+            'image' => $request->image
+        ]);
+        return redirect()->route('show', $id);
     }
 
     /**
@@ -92,8 +94,10 @@ class PhraseController extends Controller
      * @param  \App\Models\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Phrase $id)
+    public function destroy($id)
     {
-        //
+        $phrase = Phrase::find($id);
+        $phrase->delete();
+        return redirect()->route('home');
     }
 }

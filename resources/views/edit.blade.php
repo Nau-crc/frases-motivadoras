@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit</title>
-</head>
+@extends('layouts.head')
+
 <body>
-<form action="{{ route('update') }}" method="GET" enctype="multipart/form-data">
+    <form action="{{ route('update', $phrase->id) }}" method="POST" enctype="multipart/form-data">
+        @method('patch')
         @csrf
-        @method('PUT')
         <div>
-            <label for="{{ $phrase->phrase }}">Phrase</label>
-            <input type="text" name="{{ $phrase->phrase }}" value="{{ $phrase->phrase }}">
+            <label for="phrase">Phrase</label>
+            <input type="text" name="phrase" value="{{ $phrase->phrase }}">
         </div>
         <div>
-            <label for="{{ $phrase->author }}">Author</label>
-            <input type="text" name="{{ $phrase->author }}" value="{{ $phrase->author }}">
+            <label for="author">Author</label>
+            <input type="text" name="author" value="{{ $phrase->author }}">
         </div>
         <div>
-            <label for="{{ $phrase->image }}">Image</label>
-            <input type="text" name="{{ $phrase->image }}" value="{{ $phrase->image }}">
+            <label for="image">Image</label>
+            <input type="text" name="image" value="{{ $phrase->image }}">
         </div>
         <div>
             <button type="submit">Save</button>
@@ -28,4 +22,5 @@
         </div>
     </form>
 </body>
+
 </html>
